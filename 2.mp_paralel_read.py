@@ -12,6 +12,7 @@ start = time.time()
 
 df = pd.read_csv('sample_1Jt.csv')
 
+#Tentukan banyak mahasiswa yang dihitung
 jumlah_mahasiswa = 100000
 
 def calc_MHS_25(number):
