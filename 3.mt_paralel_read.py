@@ -12,7 +12,7 @@ start = time.time()
 
 df = pd.read_csv('sample_1Jt.csv')
 
-jumlah_mahasiswa = 100000
+jumlah_mahasiswa = 1000
 
 def calc_MHS_25(number):
     for x in range (0,number):
@@ -22,9 +22,8 @@ def calc_MHS_25(number):
         print ('Rerata MHS -',x+1 , ':',rerata)
         print ('Done in : ',time.time()-start,'Seconds')
 
-
 def calc_MHS_50(number):
-    for x in range (25000,number):
+    for x in range (250,number):
         #time.sleep(1)
         sample = df.iloc[x,3:27].sum()
         rerata = sample / 24
@@ -32,7 +31,7 @@ def calc_MHS_50(number):
         print ('Done in : ',time.time()-start,'Seconds')
 
 def calc_MHS_75(number):
-    for x in range (50000,number):
+    for x in range (500,number):
         #time.sleep(1)
         sample = df.iloc[x,3:27].sum()
         rerata = sample / 24
@@ -40,7 +39,7 @@ def calc_MHS_75(number):
         print ('Done in : ',time.time()-start,'Seconds')
 
 def calc_MHS_100(number):
-    for x in range (75000,number):
+    for x in range (1000,number):
         #time.sleep(1)
         sample = df.iloc[x,3:27].sum()
         rerata = sample / 24
@@ -56,7 +55,7 @@ def calc_rerata(number):
                     'nilai21','nilai22','nilai23','nilai24']
     for x in range (0,23):
         #time.sleep(1)
-        nilai = df[daftar_nilai[x]].sum()
+        nilai = df.loc[0:int(number-1),daftar_nilai[x]].sum()
         rerata = nilai/number
         print ('Total Rerata Nilai -',x+1,':', int(rerata))
         print ('Done in : ',time.time()-start,' Seconds')
@@ -64,17 +63,16 @@ def calc_rerata(number):
 if __name__ == '__main__':
 
     #Banyaknya data yang diolah oleh tiap fungsi
-    num1 = 25000
-    num2 = 50000
-    num3 = 75000
-    num4 = 100000
-    ttl = jumlah_mahasiswa
+    num1 = 250
+    num2 = 500
+    num3 = 750
+    num4 = 1000
     
     t1 = Thread(target=calc_MHS_25, args=(num1,))
     t2 = Thread(target=calc_MHS_50, args=(num2,))
     t3 = Thread(target=calc_MHS_75, args=(num3,))
     t4 = Thread(target=calc_MHS_100, args=(num4,))
-    t5 = Thread(target=calc_rerata, args=(ttl,))
+    t5 = Thread(target=calc_rerata, args=(num4,))
     
     t1.start()
     t2.start()
