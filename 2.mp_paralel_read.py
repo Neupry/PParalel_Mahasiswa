@@ -12,7 +12,6 @@ start = time.time()
 
 df = pd.read_csv('sample_1Jt.csv')
 
-#Tentukan banyak mahasiswa yang dihitung
 jumlah_mahasiswa = 100000
 
 def calc_MHS_25(number):
@@ -62,40 +61,31 @@ def calc_rerata(number):
         print ('Done in : ',time.time()-start,'Seconds')
 
 if __name__ == '__main__':
-    
+
+    #Banyaknya data yang diolah oleh tiap fungsi
     num1 = 25000
     num2 = 50000
     num3 = 75000
     num4 = 100000
     ttl = jumlah_mahasiswa
     
-    t1 = Process(target=calc_MHS_25, args=(num1,))
-    #t1.start()
-    #t1.join()
-    t2 = Process(target=calc_MHS_50, args=(num2,))
-    #t2.start()
-    #t2.join()
-    t3 = Process(target=calc_MHS_75, args=(num3,))
-    #t3.start()
-    #t3.join()
-    t4 = Process(target=calc_MHS_100, args=(num4,))
-    #t4.start()
-    #t4.join()
-    t5 = Process(target=calc_rerata, args=(ttl,))
-    #t5.start()
-    #t5.join()
+    mp1 = Process(target=calc_MHS_25, args=(num1,))
+    mp2 = Process(target=calc_MHS_50, args=(num2,))
+    mp3 = Process(target=calc_MHS_75, args=(num3,))
+    mp4 = Process(target=calc_MHS_100, args=(num4,))
+    mp5 = Process(target=calc_rerata, args=(ttl,))
 
-    t1.start()
-    t2.start()
-    t3.start()
-    t4.start()
-    t5.start()
+    mp1.start()
+    mp2.start()
+    mp3.start()
+    mp4.start()
+    mp5.start()
     
-    t1.join()
-    t2.join()
-    t3.join()
-    t4.join()
-    t5.join()
+    mp1.join()
+    mp2.join()
+    mp3.join()
+    mp4.join()
+    mp5.join()
     
     print ('MultiProcessing Done in :', time.time()-start, ' Seconds')
     
