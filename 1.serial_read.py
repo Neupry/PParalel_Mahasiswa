@@ -19,7 +19,7 @@ daftar_nilai = ['nilai1','nilai2','nilai3','nilai4',
 start = time.time()
 
 #Tentukan banyak mahasiswa yang dihitung
-jumlah_mahasiswa = 100000
+jumlah_mahasiswa = 1000
 
 for x in range (0,jumlah_mahasiswa):
     sample = df.iloc[x,3:27].sum()
@@ -28,7 +28,7 @@ for x in range (0,jumlah_mahasiswa):
     print ('Done in : ',time.time()-start,' Seconds')
     
 for x in range (0,23):
-    nilai = df[daftar_nilai[x]].sum()
+    nilai = df.loc[0:int(jumlah_mahasiswa-1),daftar_nilai[x]].sum()
     rerata = nilai/jumlah_mahasiswa
     print ('Total Rerata Nilai -',x+1,':', int(rerata))
     print ('Done in : ',time.time()-start,' Seconds')
