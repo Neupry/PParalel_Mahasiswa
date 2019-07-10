@@ -1,12 +1,11 @@
 import pandas as pd
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ProcessPoolExecutor #atau #ThreadPoolExecutor
 import time
 
 start = time.time()
 
 df = pd.read_csv('sample_1Jt.csv')
 
-#Tentukan banyak mahasiswa yang dihitung
 jumlah_mahasiswa = 100000
 
 def calc_MHS_25():
@@ -48,7 +47,7 @@ def calc_rerata():
                     'nilai13','nilai14','nilai15','nilai16',
                     'nilai17','nilai18','nilai19','nilai20',
                     'nilai21','nilai22','nilai23','nilai24']
-    for x in range (0,100000):
+    for x in range (0,23):
         #time.sleep(1)
         nilai = df[daftar_nilai[x]].sum()
         rerata = nilai/jumlah_mahasiswa
@@ -56,7 +55,7 @@ def calc_rerata():
         print ('Done in : ',time.time()-start,' Seconds')
 
 def run():
-    with ThreadPoolExecutor(max_workers=5) as executor:
+    with ProcessPoolExecutor(max_workers=5) as executor:
         task1 = executor.submit(calc_MHS_25)
         #time.sleep(0.002)
         task2 = executor.submit(calc_MHS_50)
