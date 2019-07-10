@@ -24,7 +24,7 @@ def calc_MHS_25(number):
 
 
 def calc_MHS_50(number):
-    for x in range (5,number):
+    for x in range (25000,number):
         #time.sleep(1)
         sample = df.iloc[x,3:27].sum()
         rerata = sample / 24
@@ -32,7 +32,7 @@ def calc_MHS_50(number):
         print ('Done in : ',time.time()-start,'Seconds')
 
 def calc_MHS_75(number):
-    for x in range (5,number):
+    for x in range (50000,number):
         #time.sleep(1)
         sample = df.iloc[x,3:27].sum()
         rerata = sample / 24
@@ -40,7 +40,7 @@ def calc_MHS_75(number):
         print ('Done in : ',time.time()-start,'Seconds')
 
 def calc_MHS_100(number):
-    for x in range (5,number):
+    for x in range (75000,number):
         #time.sleep(1)
         sample = df.iloc[x,3:27].sum()
         rerata = sample / 24
@@ -54,10 +54,10 @@ def calc_rerata(number):
                     'nilai13','nilai14','nilai15','nilai16',
                     'nilai17','nilai18','nilai19','nilai20',
                     'nilai21','nilai22','nilai23','nilai24']
-    for x in range (0,number):
+    for x in range (0,23):
         #time.sleep(1)
         nilai = df[daftar_nilai[x]].sum()
-        rerata = nilai/jumlah_mahasiswa
+        rerata = nilai/number
         print ('Total Rerata Nilai -',x+1,':', int(rerata))
         print ('Done in : ',time.time()-start,' Seconds')
 
