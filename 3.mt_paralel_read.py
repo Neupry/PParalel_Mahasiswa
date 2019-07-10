@@ -1,6 +1,5 @@
 import pandas as pd
 from threading import Thread
-#import multiprocessing as mp
 import time
 
 '''
@@ -13,7 +12,6 @@ start = time.time()
 
 df = pd.read_csv('sample_1Jt.csv')
 
-#Tentukan banyak mahasiswa yang dihitung
 jumlah_mahasiswa = 100000
 
 def calc_MHS_25(number):
@@ -64,6 +62,8 @@ def calc_rerata(number):
         print ('Done in : ',time.time()-start,' Seconds')
 
 if __name__ == '__main__':
+
+    #Banyaknya data yang diolah oleh tiap fungsi
     num1 = 25000
     num2 = 50000
     num3 = 75000
@@ -71,25 +71,10 @@ if __name__ == '__main__':
     ttl = jumlah_mahasiswa
     
     t1 = Thread(target=calc_MHS_25, args=(num1,))
-    #t1.start()
-    #t1.join()
     t2 = Thread(target=calc_MHS_50, args=(num2,))
-    #t2.start()
-    #t2.join()
     t3 = Thread(target=calc_MHS_75, args=(num3,))
-    #t3.start()
-    #t3.join()
     t4 = Thread(target=calc_MHS_100, args=(num4,))
-    #t4.start()
-    #t4.join()
     t5 = Thread(target=calc_rerata, args=(ttl,))
-    #t5.start()
-    #t5.join()
-    '''
-    t1 = tr.Thread(target=calc_MHS_5())
-    t2 = tr.Thread(target=calc_MHS_10())
-    t3 = tr.Thread(target=calc_rerata())
-    '''
     
     t1.start()
     t2.start()
